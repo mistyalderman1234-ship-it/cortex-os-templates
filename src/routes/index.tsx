@@ -455,6 +455,7 @@ function Pricing() {
   const tiers = [
     {
       name: "Cortex OS",
+      tier: "starter" as const,
       price: "$49",
       note: "one-time · lifetime updates",
       features: [
@@ -469,6 +470,7 @@ function Pricing() {
     },
     {
       name: "Cortex OS + Coach",
+      tier: "complete" as const,
       price: "$149",
       note: "one-time · everything below",
       features: [
@@ -521,7 +523,8 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <button
+            <CheckoutButton
+              tier={t.tier}
               className={`mt-10 w-full rounded-full px-6 py-3 text-sm font-medium transition ${
                 t.featured
                   ? "bg-paper text-ink hover:opacity-90"
@@ -529,7 +532,7 @@ function Pricing() {
               }`}
             >
               {t.cta}
-            </button>
+            </CheckoutButton>
             <p className={`mt-4 text-center text-xs ${t.featured ? "text-paper/60" : "text-muted-foreground"}`}>
               30-day no-questions refund
             </p>
@@ -539,6 +542,7 @@ function Pricing() {
     </section>
   );
 }
+
 
 function FAQ() {
   const qs = [
