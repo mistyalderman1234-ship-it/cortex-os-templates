@@ -105,13 +105,14 @@ function Hero() {
             actually holds up on a Tuesday afternoon.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#pricing"
+            <CheckoutButton
+              tier="starter"
               className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition hover:opacity-90"
             >
               Buy for $49
               <span className="transition group-hover:translate-x-0.5">→</span>
-            </a>
+            </CheckoutButton>
+
             <a href="#preview" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
               See it in action
             </a>
