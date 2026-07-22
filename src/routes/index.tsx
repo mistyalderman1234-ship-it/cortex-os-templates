@@ -26,7 +26,39 @@ function Landing() {
   );
 }
 
+function CheckoutButton({
+  tier,
+  children,
+  className,
+}: {
+  tier: "starter" | "complete";
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const checkout = useServerFn(createCheckoutSession);
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const { url } = await checkout({ data: { tier } });
+      return url;
+    },
+    onSuccess: (url) => {
+      window.location.href = url;
+    },
+  });
+
+  return (
+    <button
+      onClick={() => mutation.mutate()}
+      disabled={mutation.isPending}
+      className={className}
+    >
+      {mutation.isPending ? "Loading..." : children}
+    </button>
+  );
+}
+
 function Nav() {
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
