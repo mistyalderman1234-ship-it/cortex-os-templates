@@ -12,7 +12,7 @@ const checkoutSchema = z.object({
 });
 
 export const createCheckoutSession = createServerFn({ method: "POST" })
-  .inputValidator((data) => checkoutSchema.parse(data))
+  .validator((data) => checkoutSchema.parse(data))
   .handler(async ({ data }) => {
     const stripe = getStripe();
     const priceId = PRICE_IDS[data.tier];
