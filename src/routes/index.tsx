@@ -74,16 +74,17 @@ function Nav() {
           <a href="#pricing" className="hover:text-foreground">Pricing</a>
           <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
-        <a
-          href="#pricing"
+        <CheckoutButton
+          tier="starter"
           className="rounded-full bg-ink px-4 py-2 text-sm text-paper transition hover:opacity-90"
         >
           Get the template
-        </a>
+        </CheckoutButton>
       </div>
     </header>
   );
 }
+
 
 function Hero() {
   return (
