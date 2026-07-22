@@ -1,9 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
+import { createCheckoutSession } from "@/lib/checkout.functions";
 
 export const Route = createFileRoute("/")({
   component: Landing,
 });
+
 
 function Landing() {
   return (
@@ -22,7 +26,39 @@ function Landing() {
   );
 }
 
+function CheckoutButton({
+  tier,
+  children,
+  className,
+}: {
+  tier: "starter" | "complete";
+  children: React.ReactNode;
+  className?: string;
+}) {
+  const checkout = useServerFn(createCheckoutSession);
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const { url } = await checkout({ data: { tier } });
+      return url;
+    },
+    onSuccess: (url) => {
+      window.location.href = url;
+    },
+  });
+
+  return (
+    <button
+      onClick={() => mutation.mutate()}
+      disabled={mutation.isPending}
+      className={className}
+    >
+      {mutation.isPending ? "Loading..." : children}
+    </button>
+  );
+}
+
 function Nav() {
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -38,16 +74,17 @@ function Nav() {
           <a href="#pricing" className="hover:text-foreground">Pricing</a>
           <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
-        <a
-          href="#pricing"
+        <CheckoutButton
+          tier="starter"
           className="rounded-full bg-ink px-4 py-2 text-sm text-paper transition hover:opacity-90"
         >
           Get the template
-        </a>
+        </CheckoutButton>
       </div>
     </header>
   );
 }
+
 
 function Hero() {
   return (
@@ -68,13 +105,14 @@ function Hero() {
             actually holds up on a Tuesday afternoon.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#pricing"
+            <CheckoutButton
+              tier="starter"
               className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-paper transition hover:opacity-90"
             >
               Buy for $49
               <span className="transition group-hover:translate-x-0.5">→</span>
-            </a>
+            </CheckoutButton>
+
             <a href="#preview" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
               See it in action
             </a>
@@ -417,6 +455,7 @@ function Pricing() {
   const tiers = [
     {
       name: "Cortex OS",
+      tier: "starter" as const,
       price: "$49",
       note: "one-time · lifetime updates",
       features: [
@@ -431,6 +470,7 @@ function Pricing() {
     },
     {
       name: "Cortex OS + Coach",
+      tier: "complete" as const,
       price: "$149",
       note: "one-time · everything below",
       features: [
@@ -483,7 +523,8 @@ function Pricing() {
                 </li>
               ))}
             </ul>
-            <button
+            <CheckoutButton
+              tier={t.tier}
               className={`mt-10 w-full rounded-full px-6 py-3 text-sm font-medium transition ${
                 t.featured
                   ? "bg-paper text-ink hover:opacity-90"
@@ -491,7 +532,7 @@ function Pricing() {
               }`}
             >
               {t.cta}
-            </button>
+            </CheckoutButton>
             <p className={`mt-4 text-center text-xs ${t.featured ? "text-paper/60" : "text-muted-foreground"}`}>
               30-day no-questions refund
             </p>
@@ -501,6 +542,7 @@ function Pricing() {
     </section>
   );
 }
+
 
 function FAQ() {
   const qs = [
