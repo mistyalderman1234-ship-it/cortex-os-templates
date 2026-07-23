@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -120,6 +121,7 @@ function RootShell({ children }: { children: ReactNode }) {
         {children}
         <Scripts />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
