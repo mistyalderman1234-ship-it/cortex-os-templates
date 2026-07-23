@@ -5,9 +5,17 @@ export const Route = createFileRoute("/payment-success")({
   head: () => ({
     title: "Payment confirmed — Cortex OS",
     meta: [
-      { name: "description", content: "Your Cortex OS purchase is confirmed. Check your email for the Notion template link." },
+      {
+        name: "description",
+        content:
+          "Your Cortex OS purchase is confirmed. Check your email for the Notion template link.",
+      },
       { property: "og:title", content: "Payment confirmed — Cortex OS" },
-      { property: "og:description", content: "Your Cortex OS purchase is confirmed. Check your email for the Notion template link." },
+      {
+        property: "og:description",
+        content:
+          "Your Cortex OS purchase is confirmed. Check your email for the Notion template link.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -23,8 +31,8 @@ function PaymentSuccess() {
         </div>
         <h1 className="font-serif text-4xl">Welcome to Cortex OS</h1>
         <p className="mt-4 text-muted-foreground">
-          Your payment is confirmed. You’ll receive an email with your Notion
-          template link within a few minutes.
+          Your payment is confirmed. You’ll receive an email with your Notion template link within a
+          few minutes.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           If you don’t see it, check your spam or promotions folder.
