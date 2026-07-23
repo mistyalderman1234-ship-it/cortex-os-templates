@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -78,9 +79,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Cortex OS — The Notion system for people who think a lot" },
-      { name: "description", content: "A calm, editorial Notion template that turns scattered notes, tasks, and projects into one clear operating system. Used by 4,200+ founders, writers, and researchers." },
+      {
+        name: "description",
+        content:
+          "A calm, editorial Notion template that turns scattered notes, tasks, and projects into one clear operating system. Used by 4,200+ founders, writers, and researchers.",
+      },
       { property: "og:title", content: "Cortex OS — Your second brain, finally organized" },
-      { property: "og:description", content: "The Notion template for people who think a lot. Notes, tasks, projects, habits — one calm system." },
+      {
+        property: "og:description",
+        content:
+          "The Notion template for people who think a lot. Notes, tasks, projects, habits — one calm system.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -89,7 +98,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -107,6 +119,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <Analytics />
       </body>
     </html>
   );
