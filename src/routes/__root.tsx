@@ -77,11 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Cortex OS — The Notion system for people who think a lot" },
-      { name: "description", content: "A calm, editorial Notion template that turns scattered notes, tasks, and projects into one clear operating system. Used by 4,200+ founders, writers, and researchers." },
-      { property: "og:title", content: "Cortex OS — Your second brain, finally organized" },
-      { property: "og:description", content: "The Notion template for people who think a lot. Notes, tasks, projects, habits — one calm system." },
-      { property: "og:type", content: "website" },
+      { name: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
