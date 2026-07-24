@@ -75,14 +75,29 @@ async function fulfillOrder(session: Stripe.Checkout.Session) {
   }
 
   try {
-    await sendPurchaseEmail(session.customer_details?.email ?? "");
+    const signedUrl = await createSignedDownloadUrl();
+    await sendPurchaseEmail(session.customer_details?.email ?? "", signedUrl);
     await supabaseAdmin.from("orders").update({ customer_email_sent: true }).eq("stripe_session_id", session.id);
   } catch (err) {
     console.error("Failed to send purchase email:", err);
   }
 }
 
-async function sendPurchaseEmail(_email: string) {
+async function createSignedDownloadUrl() {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+
+  const { data, error } = await supabaseAdmin.storage
+    .from("deliverables")
+    .createSignedUrl("cortex-os-prompt-engine.pdf", 60 * 60 * 24 * 7); // 7 days
+
+  if (error || !data?.signedUrl) {
+    throw new Error("Failed to generate signed download URL: " + (error?.message ?? "unknown"));
+  }
+
+  return data.signedUrl;
+}
+
+async function sendPurchaseEmail(_email: string, _signedUrl: string) {
   // TODO: send purchase email via Lovable Emails once sender domain is configured.
-  // The order is recorded in the orders table; email delivery will be wired here.
+  // Email will include the signed download link for the Prompt Engine PDF.
 }
