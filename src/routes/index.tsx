@@ -93,16 +93,16 @@ function Hero() {
         <div className="md:col-span-7">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-ember" />
-            v4.2 — now with AI-ready templates
+            96 prompts · instant PDF delivery
           </div>
           <h1 className="text-balance font-serif text-5xl leading-[1.02] tracking-tight md:text-7xl">
-            Your second brain,{" "}
+            Your AI second brain,{" "}
             <span className="italic text-ember">finally</span> organized.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Cortex OS is a Notion template for people who think a lot. Notes,
-            tasks, projects, habits, reading, ideas — one calm system that
-            actually holds up on a Tuesday afternoon.
+            Cortex OS is a curated prompt engine for people who think a lot. 96
+            production-ready AI prompts across productivity, writing, strategy,
+            decisions, research, marketing, coding, and growth — copy, paste, and get results.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <CheckoutButton
@@ -114,7 +114,7 @@ function Hero() {
             </CheckoutButton>
 
             <a href="#preview" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
-              See it in action
+              See what's inside
             </a>
           </div>
           <div className="mt-10 flex items-center gap-6 text-xs text-muted-foreground">
@@ -132,7 +132,7 @@ function Hero() {
         </div>
 
         <div className="md:col-span-5">
-          <NotionMock />
+          <PromptPackMock />
         </div>
       </div>
     </section>
