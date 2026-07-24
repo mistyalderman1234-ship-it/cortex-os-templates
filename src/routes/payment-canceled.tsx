@@ -20,8 +20,8 @@ function PaymentCanceled() {
       <div className="mx-auto max-w-md">
         <h1 className="font-serif text-4xl">Payment canceled</h1>
         <p className="mt-4 text-muted-foreground">
-          No worries — you weren’t charged. You can come back and grab Cortex OS
-          whenever you’re ready.
+          No worries — you weren’t charged. You can come back and grab the
+          Prompt Engine whenever you’re ready.
         </p>
         <Link
           to="/"
