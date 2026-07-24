@@ -597,7 +597,7 @@ function Footer() {
         </div>
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} Cortex OS. Made carefully in Lisbon.</div>
-          <div>Not affiliated with Notion Labs, Inc.</div>
+          <div>Instant digital delivery · PDF format</div>
         </div>
       </div>
     </footer>
