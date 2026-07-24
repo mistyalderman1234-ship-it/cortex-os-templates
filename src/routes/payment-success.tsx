@@ -3,11 +3,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/payment-success")({
   component: PaymentSuccess,
   head: () => ({
-    title: "Payment confirmed — Cortex OS",
+    title: "Payment confirmed — Cortex OS Prompt Engine",
     meta: [
-      { name: "description", content: "Your Cortex OS purchase is confirmed. Check your email for the Notion template link." },
-      { property: "og:title", content: "Payment confirmed — Cortex OS" },
-      { property: "og:description", content: "Your Cortex OS purchase is confirmed. Check your email for the Notion template link." },
+      { name: "description", content: "Your Cortex OS Prompt Engine purchase is confirmed. Check your email for the PDF download link." },
+      { property: "og:title", content: "Payment confirmed — Cortex OS Prompt Engine" },
+      { property: "og:description", content: "Your Cortex OS Prompt Engine purchase is confirmed. Check your email for the PDF download link." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
