@@ -254,7 +254,7 @@ function WhatsInside() {
           What's inside
         </div>
         <h2 className="text-balance font-serif text-4xl md:text-5xl">
-          Six modules. One calm system.
+          Eight categories. One prompt away.
         </h2>
       </div>
       <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
