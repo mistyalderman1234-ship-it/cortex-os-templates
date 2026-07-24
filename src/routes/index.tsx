@@ -88,7 +88,7 @@ function Nav() {
           tier="starter"
           className="rounded-full bg-ink px-4 py-2 text-sm text-paper transition hover:opacity-90"
         >
-          Get the template
+          Get the pack
         </CheckoutButton>
       </div>
     </header>
