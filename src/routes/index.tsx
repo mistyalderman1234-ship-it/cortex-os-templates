@@ -5,6 +5,16 @@ import { useState } from "react";
 import { createCheckoutSession } from "@/lib/checkout.functions";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Cortex OS Prompt Engine — 96 AI Prompts for People Who Think" },
+      { name: "description", content: "Cortex OS Prompt Engine is a curated PDF of 96 production-ready AI prompts across productivity, writing, strategy, marketing, coding, and decisions. Buy once, use forever." },
+      { property: "og:title", content: "Cortex OS Prompt Engine — 96 AI Prompts for People Who Think" },
+      { property: "og:description", content: "A curated PDF of 96 production-ready AI prompts. Copy, paste, and get results with any LLM." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Landing,
 });
 
