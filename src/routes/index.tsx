@@ -206,34 +206,44 @@ function Marquee() {
 function WhatsInside() {
   const items = [
     {
-      title: "The Daily",
-      body: "Morning intent, three focus blocks, evening reflection. The one page you open first.",
+      title: "Productivity Engine",
+      body: "12 prompts for planning, focus blocks, time-boxing, and turning chaotic weeks into clear daily action.",
       tag: "01",
     },
     {
-      title: "Project OS",
-      body: "Every project gets a home: brief, tasks, notes, links, and status — templated so you never start from a blank page.",
+      title: "Writing & Communication",
+      body: "12 prompts to draft faster, edit sharper, rewrite in any voice, and turn rough notes into polished prose.",
       tag: "02",
     },
     {
-      title: "Second Brain",
-      body: "PARA-inspired notes vault with backlinks, tags, and a weekly review that surfaces what to reread.",
+      title: "Strategy & Research",
+      body: "12 prompts for market research, summarization, competitor analysis, and extracting signal from noise.",
       tag: "03",
     },
     {
-      title: "Reading Rail",
-      body: "Books, essays, papers, podcasts. Capture highlights and pipe them into project notes automatically.",
+      title: "Decision Making",
+      body: "12 prompts for high-stakes choices, regret minimization, cheap tests, and avoiding cognitive traps.",
       tag: "04",
     },
     {
-      title: "Habit Grid",
-      body: "Track up to 8 habits with a calm heatmap. No streak guilt — just honest data.",
+      title: "Marketing & Sales",
+      body: "12 prompts for landing pages, email sequences, lead magnets, objection handling, and launch planning.",
       tag: "05",
     },
     {
-      title: "Annual Review",
-      body: "Guided prompts, database rollups, and a printable year-in-review page every December.",
+      title: "Coding & Development",
+      body: "12 prompts for code review, scoping, debugging, schema design, and writing runbooks that ship faster.",
       tag: "06",
+    },
+    {
+      title: "Business Growth",
+      body: "12 prompts for revenue ideas, partnerships, financial modeling, pricing, and founder prioritization.",
+      tag: "07",
+    },
+    {
+      title: "Personal Growth",
+      body: "12 prompts for habit design, setbacks, boundaries, gratitude, and building a life that compounds.",
+      tag: "08",
     },
   ];
 
