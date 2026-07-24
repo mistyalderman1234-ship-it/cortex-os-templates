@@ -344,10 +344,10 @@ function Preview() {
 
 function ForWho() {
   const rows = [
-    { who: "Founders", why: "Ship without losing the plot across five simultaneous priorities." },
-    { who: "Writers", why: "Capture, connect, and resurface ideas so nothing good disappears." },
-    { who: "Researchers", why: "A literature review that doesn't collapse into 400 untitled tabs." },
-    { who: "Consultants", why: "Client-ready project pages, meeting notes, and deliverables in one place." },
+    { who: "Founders", why: "Move faster on strategy, sales copy, and investor updates without hiring another writer." },
+    { who: "Writers", why: "Draft clearer articles, newsletters, and proposals by starting with the right prompt." },
+    { who: "Researchers", why: "Summarize papers, compare options, and synthesize findings without 400 untitled tabs." },
+    { who: "Consultants", why: "Turn client calls into action items, briefs, and deliverables in minutes." },
   ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
