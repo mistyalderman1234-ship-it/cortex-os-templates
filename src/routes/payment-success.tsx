@@ -23,8 +23,8 @@ function PaymentSuccess() {
         </div>
         <h1 className="font-serif text-4xl">Welcome to Cortex OS</h1>
         <p className="mt-4 text-muted-foreground">
-          Your payment is confirmed. You’ll receive an email with your Notion
-          template link within a few minutes.
+          Your payment is confirmed. You’ll receive an email with your Prompt
+          Engine PDF download link within a few minutes.
         </p>
         <p className="mt-2 text-sm text-muted-foreground">
           If you don’t see it, check your spam or promotions folder.
