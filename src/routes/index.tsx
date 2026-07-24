@@ -139,7 +139,16 @@ function Hero() {
   );
 }
 
-function NotionMock() {
+function PromptPackMock() {
+  const prompts = [
+    "Summarize the key ideas in [text] as if explaining them to a smart 12-year-old.",
+    "Turn this meeting transcript into a one-page brief with decisions, owners, and next steps.",
+    "I want to build a habit around [behavior]. Design a 21-day starting plan.",
+    "Write a landing page outline for [product] with headline, pain points, and CTA.",
+    "Review this code snippet for bugs, performance, and readability issues.",
+    "Run a 'regret minimization' exercise for choosing between [A] and [B].",
+  ];
+
   return (
     <div className="relative">
       <div className="absolute -inset-4 rounded-3xl bg-ember/10 blur-2xl" aria-hidden />
@@ -149,59 +158,27 @@ function NotionMock() {
           <div className="h-2.5 w-2.5 rounded-full bg-muted" />
           <div className="h-2.5 w-2.5 rounded-full bg-muted" />
         </div>
-        <div className="mb-1 text-xs text-muted-foreground">🧠  Home</div>
-        <div className="font-serif text-2xl">Good morning, Alex</div>
-        <div className="mb-5 text-xs text-muted-foreground">Tuesday · 3 focus blocks planned</div>
+        <div className="mb-1 flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="inline-block rounded bg-ember/10 px-1.5 py-0.5 text-ember">PDF</span>
+          <span>Cortex OS Prompt Engine</span>
+        </div>
+        <div className="font-serif text-2xl">96 AI prompts</div>
+        <div className="mb-5 text-xs text-muted-foreground">8 categories · instant copy-paste</div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-lg border border-border bg-background p-3">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Today</div>
-            <div className="mt-2 space-y-1.5 text-xs">
-              <Task done>Draft investor update</Task>
-              <Task>Review Q3 metrics</Task>
-              <Task>Call with Priya · 3pm</Task>
+        <div className="space-y-2">
+          {prompts.map((p, i) => (
+            <div
+              key={i}
+              className="rounded-lg border border-border bg-background p-2.5 text-[11px] leading-relaxed text-foreground/90 transition hover:border-ember/30"
+            >
+              <span className="mr-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-ember/10 text-[9px] font-medium text-ember">
+                {i + 1}
+              </span>
+              {p}
             </div>
-          </div>
-          <div className="rounded-lg border border-border bg-background p-3">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Reading</div>
-            <div className="mt-2 space-y-1.5 text-xs">
-              <div className="truncate">📖  Thinking in Systems</div>
-              <div className="truncate">📄  Paul Graham — Cities</div>
-              <div className="truncate">🎧  Huberman ep. 214</div>
-            </div>
-          </div>
-          <div className="col-span-2 rounded-lg border border-border bg-background p-3">
-            <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-wider text-muted-foreground">
-              <span>Habits</span>
-              <span>this week</span>
-            </div>
-            <div className="grid grid-cols-7 gap-1">
-              {Array.from({ length: 21 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="aspect-square rounded-sm"
-                  style={{
-                    background:
-                      i % 4 === 0 ? "var(--ember)" : i % 3 === 0 ? "oklch(0.85 0.02 75)" : "var(--muted)",
-                    opacity: i % 5 === 0 ? 0.4 : 1,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-function Task({ children, done }: { children: React.ReactNode; done?: boolean }) {
-  return (
-    <div className={`flex items-center gap-2 ${done ? "text-muted-foreground line-through" : ""}`}>
-      <div className={`grid h-3 w-3 place-items-center rounded-sm border ${done ? "border-ember bg-ember" : "border-border"}`}>
-        {done && <span className="text-[8px] leading-none text-paper">✓</span>}
-      </div>
-      <span>{children}</span>
     </div>
   );
 }
