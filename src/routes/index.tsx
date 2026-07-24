@@ -8,6 +8,7 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
+
 function Landing() {
   return (
     <div className="min-h-screen bg-background text-foreground grain-bg">
@@ -46,13 +47,18 @@ function CheckoutButton({
   });
 
   return (
-    <button onClick={() => mutation.mutate()} disabled={mutation.isPending} className={className}>
+    <button
+      onClick={() => mutation.mutate()}
+      disabled={mutation.isPending}
+      className={className}
+    >
       {mutation.isPending ? "Loading..." : children}
     </button>
   );
 }
 
 function Nav() {
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
@@ -63,18 +69,10 @@ function Nav() {
           <span className="font-serif text-xl">Cortex OS</span>
         </a>
         <nav className="hidden gap-8 text-sm text-muted-foreground md:flex">
-          <a href="#inside" className="hover:text-foreground">
-            What's inside
-          </a>
-          <a href="#preview" className="hover:text-foreground">
-            Preview
-          </a>
-          <a href="#pricing" className="hover:text-foreground">
-            Pricing
-          </a>
-          <a href="#faq" className="hover:text-foreground">
-            FAQ
-          </a>
+          <a href="#inside" className="hover:text-foreground">What's inside</a>
+          <a href="#preview" className="hover:text-foreground">Preview</a>
+          <a href="#pricing" className="hover:text-foreground">Pricing</a>
+          <a href="#faq" className="hover:text-foreground">FAQ</a>
         </nav>
         <CheckoutButton
           tier="starter"
@@ -87,6 +85,7 @@ function Nav() {
   );
 }
 
+
 function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
@@ -97,11 +96,13 @@ function Hero() {
             v4.2 — now with AI-ready templates
           </div>
           <h1 className="text-balance font-serif text-5xl leading-[1.02] tracking-tight md:text-7xl">
-            Your second brain, <span className="italic text-ember">finally</span> organized.
+            Your second brain,{" "}
+            <span className="italic text-ember">finally</span> organized.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Cortex OS is a Notion template for people who think a lot. Notes, tasks, projects,
-            habits, reading, ideas — one calm system that actually holds up on a Tuesday afternoon.
+            Cortex OS is a Notion template for people who think a lot. Notes,
+            tasks, projects, habits, reading, ideas — one calm system that
+            actually holds up on a Tuesday afternoon.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <CheckoutButton
@@ -112,10 +113,7 @@ function Hero() {
               <span className="transition group-hover:translate-x-0.5">→</span>
             </CheckoutButton>
 
-            <a
-              href="#preview"
-              className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
-            >
+            <a href="#preview" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
               See it in action
             </a>
           </div>
@@ -151,7 +149,7 @@ function NotionMock() {
           <div className="h-2.5 w-2.5 rounded-full bg-muted" />
           <div className="h-2.5 w-2.5 rounded-full bg-muted" />
         </div>
-        <div className="mb-1 text-xs text-muted-foreground">🧠 Home</div>
+        <div className="mb-1 text-xs text-muted-foreground">🧠  Home</div>
         <div className="font-serif text-2xl">Good morning, Alex</div>
         <div className="mb-5 text-xs text-muted-foreground">Tuesday · 3 focus blocks planned</div>
 
@@ -165,13 +163,11 @@ function NotionMock() {
             </div>
           </div>
           <div className="rounded-lg border border-border bg-background p-3">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-              Reading
-            </div>
+            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Reading</div>
             <div className="mt-2 space-y-1.5 text-xs">
-              <div className="truncate">📖 Thinking in Systems</div>
-              <div className="truncate">📄 Paul Graham — Cities</div>
-              <div className="truncate">🎧 Huberman ep. 214</div>
+              <div className="truncate">📖  Thinking in Systems</div>
+              <div className="truncate">📄  Paul Graham — Cities</div>
+              <div className="truncate">🎧  Huberman ep. 214</div>
             </div>
           </div>
           <div className="col-span-2 rounded-lg border border-border bg-background p-3">
@@ -186,11 +182,7 @@ function NotionMock() {
                   className="aspect-square rounded-sm"
                   style={{
                     background:
-                      i % 4 === 0
-                        ? "var(--ember)"
-                        : i % 3 === 0
-                          ? "oklch(0.85 0.02 75)"
-                          : "var(--muted)",
+                      i % 4 === 0 ? "var(--ember)" : i % 3 === 0 ? "oklch(0.85 0.02 75)" : "var(--muted)",
                     opacity: i % 5 === 0 ? 0.4 : 1,
                   }}
                 />
@@ -206,9 +198,7 @@ function NotionMock() {
 function Task({ children, done }: { children: React.ReactNode; done?: boolean }) {
   return (
     <div className={`flex items-center gap-2 ${done ? "text-muted-foreground line-through" : ""}`}>
-      <div
-        className={`grid h-3 w-3 place-items-center rounded-sm border ${done ? "border-ember bg-ember" : "border-border"}`}
-      >
+      <div className={`grid h-3 w-3 place-items-center rounded-sm border ${done ? "border-ember bg-ember" : "border-border"}`}>
         {done && <span className="text-[8px] leading-none text-paper">✓</span>}
       </div>
       <span>{children}</span>
@@ -309,9 +299,10 @@ function Preview() {
               Built the way you actually think.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Cortex OS isn't a template dump. Every database is wired together — a task on a
-              project shows up on your daily; a highlight from your reading appears in the related
-              project notes; a habit lapse nudges your weekly review.
+              Cortex OS isn't a template dump. Every database is wired together
+              — a task on a project shows up on your daily; a highlight from
+              your reading appears in the related project notes; a habit lapse
+              nudges your weekly review.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               {[
@@ -330,16 +321,14 @@ function Preview() {
 
           <div className="rounded-2xl border border-border bg-background p-6 shadow-[0_30px_60px_-30px_rgba(20,15,10,0.25)]">
             <div className="mb-4 flex items-center justify-between border-b border-border pb-3 text-xs text-muted-foreground">
-              <span>📁 Projects / Ship v4.2</span>
+              <span>📁  Projects / Ship v4.2</span>
               <span>Updated 2h ago</span>
             </div>
             <div className="font-serif text-2xl">Ship Cortex OS v4.2</div>
             <div className="mt-1 flex flex-wrap gap-1.5 text-[10px]">
               <span className="rounded-full bg-ember/15 px-2 py-0.5 text-ember">In progress</span>
               <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Q4</span>
-              <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">
-                Product
-              </span>
+              <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Product</span>
             </div>
 
             <div className="mt-5 grid grid-cols-3 gap-3">
@@ -370,7 +359,7 @@ function Preview() {
                   key={n}
                   className="flex items-center justify-between rounded-md border border-transparent px-2 py-1.5 transition hover:border-border hover:bg-card"
                 >
-                  <span>📝 {n}</span>
+                  <span>📝  {n}</span>
                   <span className="text-xs text-muted-foreground">→</span>
                 </div>
               ))}
@@ -386,14 +375,8 @@ function ForWho() {
   const rows = [
     { who: "Founders", why: "Ship without losing the plot across five simultaneous priorities." },
     { who: "Writers", why: "Capture, connect, and resurface ideas so nothing good disappears." },
-    {
-      who: "Researchers",
-      why: "A literature review that doesn't collapse into 400 untitled tabs.",
-    },
-    {
-      who: "Consultants",
-      why: "Client-ready project pages, meeting notes, and deliverables in one place.",
-    },
+    { who: "Researchers", why: "A literature review that doesn't collapse into 400 untitled tabs." },
+    { who: "Consultants", why: "Client-ready project pages, meeting notes, and deliverables in one place." },
   ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
@@ -446,14 +429,13 @@ function Testimonials() {
           <div className="mb-3 text-xs uppercase tracking-[0.2em] text-paper/60">
             What people say
           </div>
-          <h2 className="font-serif text-4xl md:text-5xl">Quiet praise from noisy people.</h2>
+          <h2 className="font-serif text-4xl md:text-5xl">
+            Quiet praise from noisy people.
+          </h2>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {quotes.map((q) => (
-            <figure
-              key={q.a}
-              className="flex flex-col justify-between border-t border-paper/20 pt-6"
-            >
+            <figure key={q.a} className="flex flex-col justify-between border-t border-paper/20 pt-6">
               <blockquote className="font-serif text-2xl leading-snug italic text-paper/90">
                 "{q.q}"
               </blockquote>
@@ -504,7 +486,9 @@ function Pricing() {
   return (
     <section id="pricing" className="mx-auto max-w-6xl px-6 py-24">
       <div className="mb-14 max-w-2xl">
-        <div className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">Pricing</div>
+        <div className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Pricing
+        </div>
         <h2 className="text-balance font-serif text-4xl md:text-5xl">
           Pay once. Use it for years.
         </h2>
@@ -527,18 +511,14 @@ function Pricing() {
             </div>
             <div className="mt-6 flex items-baseline gap-2">
               <div className="font-serif text-5xl">{t.price}</div>
-              <div
-                className={t.featured ? "text-paper/60 text-sm" : "text-muted-foreground text-sm"}
-              >
+              <div className={t.featured ? "text-paper/60 text-sm" : "text-muted-foreground text-sm"}>
                 {t.note}
               </div>
             </div>
             <ul className="mt-8 space-y-3 text-sm">
               {t.features.map((f) => (
                 <li key={f} className="flex items-start gap-3">
-                  <span
-                    className={`mt-1.5 h-1 w-4 flex-none ${t.featured ? "bg-ember" : "bg-ember"}`}
-                  />
+                  <span className={`mt-1.5 h-1 w-4 flex-none ${t.featured ? "bg-ember" : "bg-ember"}`} />
                   <span className={t.featured ? "text-paper/90" : ""}>{f}</span>
                 </li>
               ))}
@@ -553,9 +533,7 @@ function Pricing() {
             >
               {t.cta}
             </CheckoutButton>
-            <p
-              className={`mt-4 text-center text-xs ${t.featured ? "text-paper/60" : "text-muted-foreground"}`}
-            >
+            <p className={`mt-4 text-center text-xs ${t.featured ? "text-paper/60" : "text-muted-foreground"}`}>
               30-day no-questions refund
             </p>
           </div>
@@ -564,6 +542,7 @@ function Pricing() {
     </section>
   );
 }
+
 
 function FAQ() {
   const qs = [
@@ -593,7 +572,9 @@ function FAQ() {
     <section id="faq" className="border-t border-border bg-secondary/40 py-24">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 md:grid-cols-12">
         <div className="md:col-span-4">
-          <div className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">FAQ</div>
+          <div className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            FAQ
+          </div>
           <h2 className="font-serif text-4xl md:text-5xl">Questions, answered.</h2>
         </div>
         <div className="md:col-span-8">
@@ -605,9 +586,13 @@ function FAQ() {
                   className="flex w-full items-center justify-between gap-6 text-left"
                 >
                   <span className="font-serif text-xl">{item.q}</span>
-                  <span className="font-serif text-2xl text-ember">{open === i ? "–" : "+"}</span>
+                  <span className="font-serif text-2xl text-ember">
+                    {open === i ? "–" : "+"}
+                  </span>
                 </button>
-                {open === i && <p className="mt-3 max-w-2xl text-muted-foreground">{item.a}</p>}
+                {open === i && (
+                  <p className="mt-3 max-w-2xl text-muted-foreground">{item.a}</p>
+                )}
               </div>
             ))}
           </div>
@@ -634,10 +619,7 @@ function Footer() {
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 md:col-span-6 md:grid-cols-3">
-            <FooterCol
-              title="Product"
-              items={["What's inside", "Preview", "Pricing", "Changelog"]}
-            />
+            <FooterCol title="Product" items={["What's inside", "Preview", "Pricing", "Changelog"]} />
             <FooterCol title="Company" items={["About", "Journal", "Affiliates", "Contact"]} />
             <FooterCol title="Legal" items={["Terms", "Privacy", "Refunds", "License"]} />
           </div>
@@ -654,7 +636,9 @@ function Footer() {
 function FooterCol({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <div className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">{title}</div>
+      <div className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+        {title}
+      </div>
       <ul className="space-y-2 text-sm">
         {items.map((i) => (
           <li key={i}>

@@ -76,10 +76,7 @@ async function fulfillOrder(session: Stripe.Checkout.Session) {
 
   try {
     await sendPurchaseEmail(session.customer_details?.email ?? "");
-    await supabaseAdmin
-      .from("orders")
-      .update({ customer_email_sent: true })
-      .eq("stripe_session_id", session.id);
+    await supabaseAdmin.from("orders").update({ customer_email_sent: true }).eq("stripe_session_id", session.id);
   } catch (err) {
     console.error("Failed to send purchase email:", err);
   }

@@ -77,9 +77,7 @@
     font-feature-settings: "ss01", "cv11";
     -webkit-font-smoothing: antialiased;
   }
-  h1,
-  h2,
-  h3 {
+  h1, h2, h3 {
     font-family: var(--font-serif);
     font-weight: 400;
     letter-spacing: -0.015em;
@@ -91,6 +89,7 @@
 }
 
 @utility grain-bg {
-  background-image: radial-gradient(oklch(0.18 0.015 60 / 0.04) 1px, transparent 1px);
+  background-image:
+    radial-gradient(oklch(0.18 0.015 60 / 0.04) 1px, transparent 1px);
   background-size: 3px 3px;
 }
