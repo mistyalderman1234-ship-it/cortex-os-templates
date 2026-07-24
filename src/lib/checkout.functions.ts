@@ -17,7 +17,10 @@ export const createCheckoutSession = createServerFn({ method: "POST" })
     const stripe = getStripe();
     const priceId = PRICE_IDS[data.tier];
 
-    const origin = process.env.APP_ORIGIN ?? "https://cortex-os-templates.lovable.app";
+    // Determine origin from environment variables
+    const origin = process.env.APP_ORIGIN || 
+                   process.env.VITE_APP_URL || 
+                   "https://cortex-os-templates.lovable.app";
 
     const session = await stripe.checkout.sessions.create({
       line_items: [{ price: priceId, quantity: 1 }],
