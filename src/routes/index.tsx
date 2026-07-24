@@ -378,17 +378,17 @@ function ForWho() {
 function Testimonials() {
   const quotes = [
     {
-      q: "I've bought maybe fifteen Notion templates. This is the only one still on my sidebar six months later.",
+      q: "I used to stare at a blank chat box. Now I open the Prompt Engine, copy one, and have a useful answer in 30 seconds.",
       a: "Maya R.",
       role: "Founder, Loop Studio",
     },
     {
-      q: "The weekly review alone is worth it. I finally stopped losing ideas between apps.",
+      q: "The research prompts alone paid for the pack. I can turn a messy topic into a structured brief in one pass.",
       a: "Jonas W.",
       role: "PhD candidate, ETH Zürich",
     },
     {
-      q: "It looks like something Kinfolk would ship. Rare for a productivity tool.",
+      q: "It looks like something Kinfolk would ship. Rare for a productivity tool — and it actually works.",
       a: "Priya S.",
       role: "Design director",
     },
