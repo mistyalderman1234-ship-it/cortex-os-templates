@@ -3,11 +3,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/payment-canceled")({
   component: PaymentCanceled,
   head: () => ({
-    title: "Payment canceled — Cortex OS",
+    title: "Payment canceled — Cortex OS Prompt Engine",
     meta: [
-      { name: "description", content: "Your Cortex OS purchase was canceled. You can try again anytime." },
-      { property: "og:title", content: "Payment canceled — Cortex OS" },
-      { property: "og:description", content: "Your Cortex OS purchase was canceled. You can try again anytime." },
+      { name: "description", content: "Your Cortex OS Prompt Engine purchase was canceled. You can try again anytime." },
+      { property: "og:title", content: "Payment canceled — Cortex OS Prompt Engine" },
+      { property: "og:description", content: "Your Cortex OS Prompt Engine purchase was canceled. You can try again anytime." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
