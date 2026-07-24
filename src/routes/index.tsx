@@ -283,20 +283,20 @@ function Preview() {
               A closer look
             </div>
             <h2 className="text-balance font-serif text-4xl md:text-5xl">
-              Built the way you actually think.
+              Prompts you can use today.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Cortex OS isn't a template dump. Every database is wired together
-              — a task on a project shows up on your daily; a highlight from
-              your reading appears in the related project notes; a habit lapse
-              nudges your weekly review.
+              Cortex OS isn't a course you have to finish. It's a tool you open
+              when you're stuck — copy a prompt, fill in the blanks, and get a
+              useful result in seconds. No setup, no learning curve, no AI
+              expertise required.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               {[
-                "12 linked databases with clean relations",
-                "Custom views for daily, weekly, quarterly",
-                "Works on Notion Free — no upgrade required",
-                "Fully editable — bring your own workflow",
+                "96 prompts across 8 high-leverage work categories",
+                "Every prompt has a clear fill-in-the-blank format",
+                "Works with ChatGPT, Claude, Gemini, and any LLM",
+                "Delivered as a clean PDF — keep it forever",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-3">
                   <span className="mt-1.5 h-1 w-4 flex-none bg-ember" />
@@ -308,46 +308,30 @@ function Preview() {
 
           <div className="rounded-2xl border border-border bg-background p-6 shadow-[0_30px_60px_-30px_rgba(20,15,10,0.25)]">
             <div className="mb-4 flex items-center justify-between border-b border-border pb-3 text-xs text-muted-foreground">
-              <span>📁  Projects / Ship v4.2</span>
-              <span>Updated 2h ago</span>
-            </div>
-            <div className="font-serif text-2xl">Ship Cortex OS v4.2</div>
-            <div className="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span className="rounded-full bg-ember/15 px-2 py-0.5 text-ember">In progress</span>
-              <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Q4</span>
-              <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Product</span>
+              <span>📄  Cortex OS Prompt Engine</span>
+              <span>96 prompts</span>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="space-y-3">
               {[
-                { label: "Tasks", value: "12/18" },
-                { label: "Notes", value: "27" },
-                { label: "Days left", value: "6" },
-              ].map((s) => (
-                <div key={s.label} className="rounded-lg border border-border p-3">
-                  <div className="font-serif text-xl">{s.value}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                    {s.label}
+                {
+                  cat: "Productivity",
+                  prompt: "Plan my week around [top 3 priorities]. Build a realistic schedule with focus blocks, buffer time, and one thing to defer.",
+                },
+                {
+                  cat: "Marketing",
+                  prompt: "Write a landing page outline for [product]. Include headline, subhead, 3 pain points, 3 benefits, social proof, CTA, and risk reversal.",
+                },
+                {
+                  cat: "Decisions",
+                  prompt: "I'm stuck between [A] and [B]. Ask 5 questions that reveal my true priorities, then recommend a path.",
+                },
+              ].map((p, i) => (
+                <div key={i} className="rounded-lg border border-border p-3">
+                  <div className="mb-1.5 text-[10px] uppercase tracking-wider text-ember">
+                    {p.cat}
                   </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 space-y-2 text-sm">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                Linked notes
-              </div>
-              {[
-                "AI-ready templates — research",
-                "Pricing test — $39 vs $49",
-                "Onboarding video — script v2",
-              ].map((n) => (
-                <div
-                  key={n}
-                  className="flex items-center justify-between rounded-md border border-transparent px-2 py-1.5 transition hover:border-border hover:bg-card"
-                >
-                  <span>📝  {n}</span>
-                  <span className="text-xs text-muted-foreground">→</span>
+                  <div className="text-sm leading-relaxed text-foreground/90">{p.prompt}</div>
                 </div>
               ))}
             </div>
