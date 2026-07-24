@@ -518,16 +518,16 @@ function Pricing() {
 function FAQ() {
   const qs = [
     {
-      q: "Do I need a paid Notion account?",
-      a: "No. Cortex OS runs on the free Notion plan for individuals. Team features are optional.",
+      q: "What AI tools do these prompts work with?",
+      a: "Any LLM: ChatGPT, Claude, Gemini, Perplexity, Cursor, and even local models. The prompts are written in plain language with fill-in-the-blank brackets.",
     },
     {
       q: "Is it a one-time purchase?",
       a: "Yes. $49 once, and you get every update for as long as the product exists.",
     },
     {
-      q: "Can I customize it?",
-      a: "Please do. Every database, view, and template is fully editable. Cortex OS is a starting point, not a cage.",
+      q: "How do I receive the prompt pack?",
+      a: "After checkout, you get an instant email with a PDF download link. No Notion account, no setup, no waiting.",
     },
     {
       q: "What if it's not for me?",
