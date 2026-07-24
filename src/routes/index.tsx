@@ -5,6 +5,16 @@ import { useState } from "react";
 import { createCheckoutSession } from "@/lib/checkout.functions";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Cortex OS Prompt Engine — 96 AI Prompts for People Who Think" },
+      { name: "description", content: "Cortex OS Prompt Engine is a curated PDF of 96 production-ready AI prompts across productivity, writing, strategy, marketing, coding, and decisions. Buy once, use forever." },
+      { property: "og:title", content: "Cortex OS Prompt Engine — 96 AI Prompts for People Who Think" },
+      { property: "og:description", content: "A curated PDF of 96 production-ready AI prompts. Copy, paste, and get results with any LLM." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Landing,
 });
 
@@ -78,7 +88,7 @@ function Nav() {
           tier="starter"
           className="rounded-full bg-ink px-4 py-2 text-sm text-paper transition hover:opacity-90"
         >
-          Get the template
+          Get the pack
         </CheckoutButton>
       </div>
     </header>
@@ -93,16 +103,16 @@ function Hero() {
         <div className="md:col-span-7">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-ember" />
-            v4.2 — now with AI-ready templates
+            96 prompts · instant PDF delivery
           </div>
           <h1 className="text-balance font-serif text-5xl leading-[1.02] tracking-tight md:text-7xl">
-            Your second brain,{" "}
+            Your AI second brain,{" "}
             <span className="italic text-ember">finally</span> organized.
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-            Cortex OS is a Notion template for people who think a lot. Notes,
-            tasks, projects, habits, reading, ideas — one calm system that
-            actually holds up on a Tuesday afternoon.
+            Cortex OS is a curated prompt engine for people who think a lot. 96
+            production-ready AI prompts across productivity, writing, strategy,
+            decisions, research, marketing, coding, and growth — copy, paste, and get results.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <CheckoutButton
@@ -114,7 +124,7 @@ function Hero() {
             </CheckoutButton>
 
             <a href="#preview" className="text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground">
-              See it in action
+              See what's inside
             </a>
           </div>
           <div className="mt-10 flex items-center gap-6 text-xs text-muted-foreground">
@@ -132,14 +142,23 @@ function Hero() {
         </div>
 
         <div className="md:col-span-5">
-          <NotionMock />
+          <PromptPackMock />
         </div>
       </div>
     </section>
   );
 }
 
-function NotionMock() {
+function PromptPackMock() {
+  const prompts = [
+    "Summarize the key ideas in [text] as if explaining them to a smart 12-year-old.",
+    "Turn this meeting transcript into a one-page brief with decisions, owners, and next steps.",
+    "I want to build a habit around [behavior]. Design a 21-day starting plan.",
+    "Write a landing page outline for [product] with headline, pain points, and CTA.",
+    "Review this code snippet for bugs, performance, and readability issues.",
+    "Run a 'regret minimization' exercise for choosing between [A] and [B].",
+  ];
+
   return (
     <div className="relative">
       <div className="absolute -inset-4 rounded-3xl bg-ember/10 blur-2xl" aria-hidden />
@@ -149,59 +168,27 @@ function NotionMock() {
           <div className="h-2.5 w-2.5 rounded-full bg-muted" />
           <div className="h-2.5 w-2.5 rounded-full bg-muted" />
         </div>
-        <div className="mb-1 text-xs text-muted-foreground">🧠  Home</div>
-        <div className="font-serif text-2xl">Good morning, Alex</div>
-        <div className="mb-5 text-xs text-muted-foreground">Tuesday · 3 focus blocks planned</div>
+        <div className="mb-1 flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="inline-block rounded bg-ember/10 px-1.5 py-0.5 text-ember">PDF</span>
+          <span>Cortex OS Prompt Engine</span>
+        </div>
+        <div className="font-serif text-2xl">96 AI prompts</div>
+        <div className="mb-5 text-xs text-muted-foreground">8 categories · instant copy-paste</div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div className="rounded-lg border border-border bg-background p-3">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Today</div>
-            <div className="mt-2 space-y-1.5 text-xs">
-              <Task done>Draft investor update</Task>
-              <Task>Review Q3 metrics</Task>
-              <Task>Call with Priya · 3pm</Task>
+        <div className="space-y-2">
+          {prompts.map((p, i) => (
+            <div
+              key={i}
+              className="rounded-lg border border-border bg-background p-2.5 text-[11px] leading-relaxed text-foreground/90 transition hover:border-ember/30"
+            >
+              <span className="mr-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-ember/10 text-[9px] font-medium text-ember">
+                {i + 1}
+              </span>
+              {p}
             </div>
-          </div>
-          <div className="rounded-lg border border-border bg-background p-3">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Reading</div>
-            <div className="mt-2 space-y-1.5 text-xs">
-              <div className="truncate">📖  Thinking in Systems</div>
-              <div className="truncate">📄  Paul Graham — Cities</div>
-              <div className="truncate">🎧  Huberman ep. 214</div>
-            </div>
-          </div>
-          <div className="col-span-2 rounded-lg border border-border bg-background p-3">
-            <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-wider text-muted-foreground">
-              <span>Habits</span>
-              <span>this week</span>
-            </div>
-            <div className="grid grid-cols-7 gap-1">
-              {Array.from({ length: 21 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="aspect-square rounded-sm"
-                  style={{
-                    background:
-                      i % 4 === 0 ? "var(--ember)" : i % 3 === 0 ? "oklch(0.85 0.02 75)" : "var(--muted)",
-                    opacity: i % 5 === 0 ? 0.4 : 1,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-function Task({ children, done }: { children: React.ReactNode; done?: boolean }) {
-  return (
-    <div className={`flex items-center gap-2 ${done ? "text-muted-foreground line-through" : ""}`}>
-      <div className={`grid h-3 w-3 place-items-center rounded-sm border ${done ? "border-ember bg-ember" : "border-border"}`}>
-        {done && <span className="text-[8px] leading-none text-paper">✓</span>}
-      </div>
-      <span>{children}</span>
     </div>
   );
 }
@@ -229,34 +216,44 @@ function Marquee() {
 function WhatsInside() {
   const items = [
     {
-      title: "The Daily",
-      body: "Morning intent, three focus blocks, evening reflection. The one page you open first.",
+      title: "Productivity Engine",
+      body: "12 prompts for planning, focus blocks, time-boxing, and turning chaotic weeks into clear daily action.",
       tag: "01",
     },
     {
-      title: "Project OS",
-      body: "Every project gets a home: brief, tasks, notes, links, and status — templated so you never start from a blank page.",
+      title: "Writing & Communication",
+      body: "12 prompts to draft faster, edit sharper, rewrite in any voice, and turn rough notes into polished prose.",
       tag: "02",
     },
     {
-      title: "Second Brain",
-      body: "PARA-inspired notes vault with backlinks, tags, and a weekly review that surfaces what to reread.",
+      title: "Strategy & Research",
+      body: "12 prompts for market research, summarization, competitor analysis, and extracting signal from noise.",
       tag: "03",
     },
     {
-      title: "Reading Rail",
-      body: "Books, essays, papers, podcasts. Capture highlights and pipe them into project notes automatically.",
+      title: "Decision Making",
+      body: "12 prompts for high-stakes choices, regret minimization, cheap tests, and avoiding cognitive traps.",
       tag: "04",
     },
     {
-      title: "Habit Grid",
-      body: "Track up to 8 habits with a calm heatmap. No streak guilt — just honest data.",
+      title: "Marketing & Sales",
+      body: "12 prompts for landing pages, email sequences, lead magnets, objection handling, and launch planning.",
       tag: "05",
     },
     {
-      title: "Annual Review",
-      body: "Guided prompts, database rollups, and a printable year-in-review page every December.",
+      title: "Coding & Development",
+      body: "12 prompts for code review, scoping, debugging, schema design, and writing runbooks that ship faster.",
       tag: "06",
+    },
+    {
+      title: "Business Growth",
+      body: "12 prompts for revenue ideas, partnerships, financial modeling, pricing, and founder prioritization.",
+      tag: "07",
+    },
+    {
+      title: "Personal Growth",
+      body: "12 prompts for habit design, setbacks, boundaries, gratitude, and building a life that compounds.",
+      tag: "08",
     },
   ];
 
@@ -267,7 +264,7 @@ function WhatsInside() {
           What's inside
         </div>
         <h2 className="text-balance font-serif text-4xl md:text-5xl">
-          Six modules. One calm system.
+          Eight categories. One prompt away.
         </h2>
       </div>
       <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
@@ -296,20 +293,20 @@ function Preview() {
               A closer look
             </div>
             <h2 className="text-balance font-serif text-4xl md:text-5xl">
-              Built the way you actually think.
+              Prompts you can use today.
             </h2>
             <p className="mt-5 text-muted-foreground">
-              Cortex OS isn't a template dump. Every database is wired together
-              — a task on a project shows up on your daily; a highlight from
-              your reading appears in the related project notes; a habit lapse
-              nudges your weekly review.
+              Cortex OS isn't a course you have to finish. It's a tool you open
+              when you're stuck — copy a prompt, fill in the blanks, and get a
+              useful result in seconds. No setup, no learning curve, no AI
+              expertise required.
             </p>
             <ul className="mt-6 space-y-3 text-sm">
               {[
-                "12 linked databases with clean relations",
-                "Custom views for daily, weekly, quarterly",
-                "Works on Notion Free — no upgrade required",
-                "Fully editable — bring your own workflow",
+                "96 prompts across 8 high-leverage work categories",
+                "Every prompt has a clear fill-in-the-blank format",
+                "Works with ChatGPT, Claude, Gemini, and any LLM",
+                "Delivered as a clean PDF — keep it forever",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-3">
                   <span className="mt-1.5 h-1 w-4 flex-none bg-ember" />
@@ -321,46 +318,30 @@ function Preview() {
 
           <div className="rounded-2xl border border-border bg-background p-6 shadow-[0_30px_60px_-30px_rgba(20,15,10,0.25)]">
             <div className="mb-4 flex items-center justify-between border-b border-border pb-3 text-xs text-muted-foreground">
-              <span>📁  Projects / Ship v4.2</span>
-              <span>Updated 2h ago</span>
-            </div>
-            <div className="font-serif text-2xl">Ship Cortex OS v4.2</div>
-            <div className="mt-1 flex flex-wrap gap-1.5 text-[10px]">
-              <span className="rounded-full bg-ember/15 px-2 py-0.5 text-ember">In progress</span>
-              <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Q4</span>
-              <span className="rounded-full bg-muted px-2 py-0.5 text-muted-foreground">Product</span>
+              <span>📄  Cortex OS Prompt Engine</span>
+              <span>96 prompts</span>
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className="space-y-3">
               {[
-                { label: "Tasks", value: "12/18" },
-                { label: "Notes", value: "27" },
-                { label: "Days left", value: "6" },
-              ].map((s) => (
-                <div key={s.label} className="rounded-lg border border-border p-3">
-                  <div className="font-serif text-xl">{s.value}</div>
-                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                    {s.label}
+                {
+                  cat: "Productivity",
+                  prompt: "Plan my week around [top 3 priorities]. Build a realistic schedule with focus blocks, buffer time, and one thing to defer.",
+                },
+                {
+                  cat: "Marketing",
+                  prompt: "Write a landing page outline for [product]. Include headline, subhead, 3 pain points, 3 benefits, social proof, CTA, and risk reversal.",
+                },
+                {
+                  cat: "Decisions",
+                  prompt: "I'm stuck between [A] and [B]. Ask 5 questions that reveal my true priorities, then recommend a path.",
+                },
+              ].map((p, i) => (
+                <div key={i} className="rounded-lg border border-border p-3">
+                  <div className="mb-1.5 text-[10px] uppercase tracking-wider text-ember">
+                    {p.cat}
                   </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-5 space-y-2 text-sm">
-              <div className="text-xs uppercase tracking-wider text-muted-foreground">
-                Linked notes
-              </div>
-              {[
-                "AI-ready templates — research",
-                "Pricing test — $39 vs $49",
-                "Onboarding video — script v2",
-              ].map((n) => (
-                <div
-                  key={n}
-                  className="flex items-center justify-between rounded-md border border-transparent px-2 py-1.5 transition hover:border-border hover:bg-card"
-                >
-                  <span>📝  {n}</span>
-                  <span className="text-xs text-muted-foreground">→</span>
+                  <div className="text-sm leading-relaxed text-foreground/90">{p.prompt}</div>
                 </div>
               ))}
             </div>
@@ -373,10 +354,10 @@ function Preview() {
 
 function ForWho() {
   const rows = [
-    { who: "Founders", why: "Ship without losing the plot across five simultaneous priorities." },
-    { who: "Writers", why: "Capture, connect, and resurface ideas so nothing good disappears." },
-    { who: "Researchers", why: "A literature review that doesn't collapse into 400 untitled tabs." },
-    { who: "Consultants", why: "Client-ready project pages, meeting notes, and deliverables in one place." },
+    { who: "Founders", why: "Move faster on strategy, sales copy, and investor updates without hiring another writer." },
+    { who: "Writers", why: "Draft clearer articles, newsletters, and proposals by starting with the right prompt." },
+    { who: "Researchers", why: "Summarize papers, compare options, and synthesize findings without 400 untitled tabs." },
+    { who: "Consultants", why: "Turn client calls into action items, briefs, and deliverables in minutes." },
   ];
   return (
     <section className="mx-auto max-w-6xl px-6 py-24">
@@ -407,17 +388,17 @@ function ForWho() {
 function Testimonials() {
   const quotes = [
     {
-      q: "I've bought maybe fifteen Notion templates. This is the only one still on my sidebar six months later.",
+      q: "I used to stare at a blank chat box. Now I open the Prompt Engine, copy one, and have a useful answer in 30 seconds.",
       a: "Maya R.",
       role: "Founder, Loop Studio",
     },
     {
-      q: "The weekly review alone is worth it. I finally stopped losing ideas between apps.",
+      q: "The research prompts alone paid for the pack. I can turn a messy topic into a structured brief in one pass.",
       a: "Jonas W.",
       role: "PhD candidate, ETH Zürich",
     },
     {
-      q: "It looks like something Kinfolk would ship. Rare for a productivity tool.",
+      q: "It looks like something Kinfolk would ship. Rare for a productivity tool — and it actually works.",
       a: "Priya S.",
       role: "Design director",
     },
@@ -454,31 +435,31 @@ function Testimonials() {
 function Pricing() {
   const tiers = [
     {
-      name: "Cortex OS",
+      name: "Cortex OS Prompt Engine",
       tier: "starter" as const,
       price: "$49",
       note: "one-time · lifetime updates",
       features: [
-        "Full 12-database template",
-        "Notion Free compatible",
+        "96 prompts across 8 categories",
+        "PDF download + instant email delivery",
         "Lifetime updates",
-        "Setup guide + 20-min walkthrough",
+        "Bonus: 10 copy-paste prompt chains",
         "Email support",
       ],
-      cta: "Buy Cortex OS",
+      cta: "Buy Prompt Engine",
       featured: true,
     },
     {
-      name: "Cortex OS + Coach",
+      name: "Prompt Engine + Session",
       tier: "complete" as const,
       price: "$149",
       note: "one-time · everything below",
       features: [
-        "Everything in Cortex OS",
-        "60-min 1:1 setup call with the founder",
-        "Personal workflow audit",
+        "Everything in Prompt Engine",
+        "60-min 1:1 prompt coaching session",
+        "Personal prompt library audit",
         "Priority support for 12 months",
-        "Bonus: The Weekly Review workbook",
+        "Bonus: 25 custom prompts for your workflow",
       ],
       cta: "Get it with coaching",
     },
@@ -547,16 +528,16 @@ function Pricing() {
 function FAQ() {
   const qs = [
     {
-      q: "Do I need a paid Notion account?",
-      a: "No. Cortex OS runs on the free Notion plan for individuals. Team features are optional.",
+      q: "What AI tools do these prompts work with?",
+      a: "Any LLM: ChatGPT, Claude, Gemini, Perplexity, Cursor, and even local models. The prompts are written in plain language with fill-in-the-blank brackets.",
     },
     {
       q: "Is it a one-time purchase?",
       a: "Yes. $49 once, and you get every update for as long as the product exists.",
     },
     {
-      q: "Can I customize it?",
-      a: "Please do. Every database, view, and template is fully editable. Cortex OS is a starting point, not a cage.",
+      q: "How do I receive the prompt pack?",
+      a: "After checkout, you get an instant email with a PDF download link. No Notion account, no setup, no waiting.",
     },
     {
       q: "What if it's not for me?",
@@ -626,7 +607,7 @@ function Footer() {
         </div>
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} Cortex OS. Made carefully in Lisbon.</div>
-          <div>Not affiliated with Notion Labs, Inc.</div>
+          <div>Instant digital delivery · PDF format</div>
         </div>
       </div>
     </footer>
