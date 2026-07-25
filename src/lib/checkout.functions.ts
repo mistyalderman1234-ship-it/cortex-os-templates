@@ -11,16 +11,29 @@ const checkoutSchema = z.object({
   tier: z.enum(["starter", "complete"]),
 });
 
+function getCheckoutOrigin(): string {
+  // Priority order for determining the origin
+  if (process.env.APP_ORIGIN) {
+    return process.env.APP_ORIGIN;
+  }
+  if (process.env.VITE_APP_URL) {
+    return process.env.VITE_APP_URL;
+  }
+  // Vercel automatically provides VERCEL_URL in production
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  // Development and testing fallback
+  return "https://cortex-os-templates.vercel.app";
+}
+
 export const createCheckoutSession = createServerFn({ method: "POST" })
   .validator((data) => checkoutSchema.parse(data))
   .handler(async ({ data }) => {
     const stripe = getStripe();
     const priceId = PRICE_IDS[data.tier];
 
-    // Determine origin from environment variables
-    const origin = process.env.APP_ORIGIN || 
-                   process.env.VITE_APP_URL || 
-                   "https://cortex-os-templates.lovable.app";
+    const origin = getCheckoutOrigin();
 
     const session = await stripe.checkout.sessions.create({
       line_items: [{ price: priceId, quantity: 1 }],
