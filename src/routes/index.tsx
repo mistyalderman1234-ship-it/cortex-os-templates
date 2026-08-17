@@ -46,26 +46,51 @@ function CheckoutButton({
   className?: string;
 }) {
   const checkout = useServerFn(createCheckoutSession);
+  const [error, setError] = useState<string | null>(null);
   const mutation = useMutation({
     mutationFn: async () => {
       const { url } = await checkout({ data: { tier } });
       return url;
     },
     onSuccess: (url) => {
+      setError(null);
+      // Stripe Checkout refuses to render inside an iframe (preview/embeds),
+      // so break out to the top-level window, falling back to a new tab.
+      try {
+        if (window.top && window.top !== window.self) {
+          window.open(url, "_blank", "noopener,noreferrer");
+          return;
+        }
+      } catch {
+        window.open(url, "_blank", "noopener,noreferrer");
+        return;
+      }
       window.location.href = url;
+    },
+    onError: (err: unknown) => {
+      setError(err instanceof Error ? err.message : "Checkout failed. Please try again.");
     },
   });
 
   return (
-    <button
-      onClick={() => mutation.mutate()}
-      disabled={mutation.isPending}
-      className={className}
-    >
-      {mutation.isPending ? "Loading..." : children}
-    </button>
+    <span className="inline-flex flex-col items-stretch gap-1">
+      <button
+        type="button"
+        onClick={() => mutation.mutate()}
+        disabled={mutation.isPending}
+        className={className}
+      >
+        {mutation.isPending ? "Loading..." : children}
+      </button>
+      {error ? (
+        <span className="text-xs text-destructive" role="alert">
+          {error}
+        </span>
+      ) : null}
+    </span>
   );
 }
+
 
 function Nav() {
 
